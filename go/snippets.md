@@ -34,7 +34,7 @@
 
 #Pointer
 ``` go
-    var variableName \*pointerType = address
+    var variableName *pointerType = address
 ```
 
 
