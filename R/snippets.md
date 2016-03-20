@@ -1,0 +1,256 @@
+#Printing
+
+```R
+print(x)
+```
+
+#Sequence
+```R
+x<-1:20
+```
+
+#Infinity
+```R
+Inf
+```
+
+#Undefined value 
+
+##Mathematical expression
+```R
+NaN
+```
+## Generic Undefined value
+```R
+NA
+```
+
+# Test for missing value
+
+```R
+is.na
+is.nan
+```
+
+#Coercion
+
+## Implicit coercison
+```R
+x <- c(TRUE,'a') ## Charcter
+x <- c(10.0,'a') ## Character
+x <- c(TRUE,10)  ## Numeric
+```
+
+## Explicit coercion
+```R
+as.integer
+as.complex
+as.logical
+as.numeric
+as.character
+```
+
+#Finding type of object
+
+```R
+class(objectName)
+```
+
+#Finding attributes of an Object
+```R
+attributes(m)
+```
+
+#Naming elements
+```R
+names(x)<- c("one","two","three")
+dimnames(m) <- list(c("a","b"),c("c","d"))
+```
+
+#Lists
+
+```R
+x <- list(1,"a",TRUE,1+4i)
+x <- list(a=1,b="a",c=TRUE,d=4+2i)
+```
+
+#Matrix
+```R
+matrix(nrow = 2, ncol = 3)
+matrix(1:6, nrow = 2, ncol = 3)
+dim(x) <- c(2,3)
+cbind(x,y) x and y are vectors of equal length.
+rbing(x,y) ## x and y are vectors of equal length.
+```
+
+#Vector
+
+```R
+c(1,2,3,4,5)
+vector(mode="atomic",length=0)
+```
+
+#Factor
+
+```R
+x<-factor(c("yes","no","yes"))
+table(x) ## Gives the frequency of the levels.
+x<-factor(c("yes","no"),levels = c("yes","no"))
+
+```
+
+##Factor attributes
+1.  class
+2.  levels
+
+#Data Frame
+```R
+read.table
+read.csv
+data.frame(foo = 1:4,bar=c(T,T,F,F))
+```
+
+##Converting to matrix
+```R
+data.matrix
+```
+
+#Reading and writing data
+
+##read.table
+```R
+read.table(file,header,sep,colClasses,nrows,comment.char,skip,stringsAsFactors)
+```
+##Figuring out classes of each column
+```R
+initial <- read.table("table.txt",nrows=10)
+classes <- sapply(initial,class)
+tabAll <- read.table("table.txt", colClasses = classes)
+```
+
+#Textual formats
+```R
+dput(x,file="x.R")
+y <- dget("x.R")
+dump(c("x","y") file="xy.R") ## Multiple objects
+source("x.R") ## Multiple objects
+```
+
+#Connections
+```R
+file(description,open="",blocking=TRUE,encoding=getOption("encoding"))
+
+con <- file("foo.txt","r")
+x <- read.csv(con)
+close(con)
+
+con <- gzfile("words.gz")
+x <- readLines(con,10)
+writeLines(con,c(10,11,12))
+close(con)
+
+con <- url("http://www.google.com")
+close(con)
+```
+
+#Subsetting
+
+```R
+x[1]
+x[x > "a"]
+
+x[[1]]
+
+x$bar <=> x[["bar"]]
+x["bar"] # returns list
+
+x[[1]][[2]]
+m[1,2]
+m[1,]
+m[,2,drop = FALSE] ## Preserves dimensions
+```
+
+## Partial Matching
+
+```R
+x$a
+x[["a",exact=FALSE]]
+```
+
+#Removing missing values
+
+```R
+#Create logical vector
+#Subset using the logical vector
+
+bad <- is.na(x)
+x[!bad]
+
+good  <- complete.cases(x,y)
+x[good]
+``` 
+
+#Vectorised Operations
+
+```R
+x*y
+m %*% n  # matrix multiplication
+```
+
+#For loop
+
+```R
+for(i in 1:4) {
+}
+
+for(i in seq_along(x)) {
+   
+}
+
+for(i in nrow(m)) {
+}
+```
+
+#Matrix
+
+```R
+matrix(data,row,column)
+```
+
+#While loop
+
+```R
+while(count < 10 ) {
+}
+```
+
+#Assignment
+```R
+
+x <- 10
+
+```
+
+#Comment
+
+```R
+ ## This is a comment
+```
+
+#Infinite Loop
+
+```R
+repeat {
+   break
+}
+```
+
+#Next
+
+```R
+for(i in 1:10) {
+   if(i == 8) {
+      next
+   }
+}
+```

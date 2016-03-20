@@ -1,6 +1,7 @@
 #Package
-
+``` go
    package main
+```
 
 #Function
 ``` go
@@ -36,5 +37,14 @@
 ``` go
     var variableName *pointerType = address
 ```
+#Constant
+##Untyped constant
+``` go
+    const constName = kind
+```
 
+##Typed constant
+``` go
+   const constName constType = kind
+```
 
