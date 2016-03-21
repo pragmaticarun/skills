@@ -76,6 +76,45 @@ Data are read through connection interface
 3.   $ - can be used to extract elements of list by name, applies only for literal name.
 
 
+#Functions
 
+##Argument Matching
+All named arguments are first taken off
+All the others are matched based on the order of the appearance
 
+The argument names can be partially matched.
+1.  Check for exact match
+2.  Check for a partial match
+3.  Check for a positional match
+
+##Lazy Evaluation
+
+Arguments are evaluated only as needed.
+
+```R
+f<-function(a,b) {
+   a^2
+}
+```
+
+##Ellipsis
+All arguments following ellipsis must be named in full.
+
+##Scope
+1.   Global workspace
+2.   Loaded Package
+
+R has separate name spaces for variables and functions
+
+R uses lexical scoping
+
+## Free variables
+Variables used in the function which are not part of formal arguments.
+
+## Closure
+A function  + an environment is called a closure or function closure.
+
+1.   Global Environment
+2.   Parent Environment 
+3.   Until Empty Environment.
 
