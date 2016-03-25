@@ -136,3 +136,26 @@ Apply a function on list of elements
 3. `browser` suspends the executing of a function whereever it is called and puts in debug mode.
 4.  `trace` allows you to insert debugging code into a function at specific places
 5.  `recover` allows you to modify the error behavior so that you can browse the function call stack.
+
+#Simulation
+
+##Probability Distribution
+
+1.  Normal
+2.  Poisson
+3.  Gamma
+4.  Uniform
+
+##Functions
+
+1. norm
+2. pois
+3. unif
+4. gamma
+
+##Prefixes
+
+1.  d - density
+2.  r - Random number generation
+3.  p - Cumulative distribution
+4.  q - Quantile function

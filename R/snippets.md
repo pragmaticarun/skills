@@ -282,7 +282,7 @@ columnMean <- function(m,removeNA = TRUE) {
 }
 ```
 
-#Finding declaration of the function
+#Finding structure of an object
 
 ```R
 str(functionName)
@@ -392,4 +392,42 @@ traceback()
 debug(lm)
 
 options(error = recover)
+```
+
+#Simulation
+
+##Distribution
+
+```R
+dnorm(x,mean=0,sd=1, log = FALSE)
+pnorm(q,mean=0,sd=1, lower.tail = TRUE, log.p = FALSE)
+qnorm(p,mean=0,sd=1,lower.tail=TRUE, log.p=FALSE)
+rnorm(n,mean=0,sd=1)
+
+set.seed(9)
+rbinom(100,1,0.5)
+e<-rnorm(100,0,2)
+y<-0.5 + 2*x +e
+plot(x,y)
+
+sample(letters,5)
+sample(1:10,replace=TRUE)
+sample(1:10)
+
+```
+
+#Profiling
+
+```R
+a <- system.time() # proc_time
+#  user  system elapsed 
+#  0.035   0.006   0.042
+```
+
+##R Profiler
+```R
+Rprof() #start profiler
+summaryRprof()
+by.total
+by.self
 ```
