@@ -118,3 +118,21 @@ A function  + an environment is called a closure or function closure.
 2.   Parent Environment 
 3.   Until Empty Environment.
 
+#Looping functions
+
+Apply a function on list of elements
+
+1. lapply - always returns a list.
+2. sapply - simplify the list returned into vector or matrix.
+2. apply  - evaluate a function on rows or columns
+3. mapply - evaluate a function over multiple arguments
+5. tapply - used to apply a function over subsets of the vector.
+6. split - not a loop function but splits a object into groups based on factors.
+
+#Debugging functions
+
+1.  `traceback` - prints out the function call stack after an error occurs
+2.  `debug` flags a function as debug
+3. `browser` suspends the executing of a function whereever it is called and puts in debug mode.
+4.  `trace` allows you to insert debugging code into a function at specific places
+5.  `recover` allows you to modify the error behavior so that you can browse the function call stack.
