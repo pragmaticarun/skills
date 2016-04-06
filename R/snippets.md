@@ -282,6 +282,12 @@ columnMean <- function(m,removeNA = TRUE) {
 }
 ```
 
+#Finding structure of an object
+
+```R
+str(functionName)
+```
+
 ##Finding formal arguments of function
 
 ```R
@@ -299,6 +305,7 @@ args(paste)
 function(...,sep=" ",collapse=NULL)
 ```
 
+<<<<<<< HEAD
 #Date
 
 ```R
@@ -313,4 +320,130 @@ quarters(d)
 as.posixct(t)
 as.posixlt(t)
 Sys.time()
+=======
+#Looping functions
+
+##lapply
+```R
+x <- list(a=1:5, b=rnorm(10))
+lapply(x,mean)
+
+#Passing arguments to the functions
+x<- 1:4
+lapply(x,runif,min=0,max=10)
+
+#Anonymous functions
+
+->lapply(x,function(elt) elt[,1])
+
+```
+##sapply
+```R
+x <- list(a=1:5,b=rnorm(10))
+sapply(x,mean)
+```
+
+##apply
+```R
+x<-matrix(rnorm(200),20,10)
+apply(x,2,mean) #column MARGIN = 2
+apply(x,1,sum)  #rows MARGIN=1
+
+#faster shortcuts for sum and Means
+rowSums,rowMeans,colSums,colMeans
+
+apply(x,1,quantile,probs=c(0.25,0.75))
+
+a<-array(rnorm(2*2*10),c(2,2,10))
+
+apply(a,c(1,2),mean) # c(1,2) is MARGIN
+
+rowMeans(a,dims = 3)
+
+```
+
+##mapply
+```R
+mapply(rep,1:4,4:1)
+
+#Vectorising a function.
+noise <- function(n,mean,sd) {
+   rnorm(n,mean,sd)
+}
+
+mapply(noise,1:5,1:5,2)
+```
+
+##tapply
+```R
+x <- c(rnorm(10),runif(10),rnorm(10,1))
+f <- gl(3,10) #factors with 3 levels.
+tapply(x,f,mean)
+tapply(x,f,range)
+split(x,f)
+```
+
+##Splitting levels
+```R
+f1 = gl(2,5)
+f2 = gl(5,2)
+split(x,list(f1,f2))
+```
+
+#Stop autoprinting
+```R
+printMessage <- function(x) {
+   if(x>0)
+      print("x is greater")
+   else
+      print("x is less")
+   invisible(x)
+}
+```
+
+#Debugging
+```R
+traceback()
+
+debug(lm)
+
+options(error = recover)
+```
+
+#Simulation
+
+##Distribution
+
+```R
+dnorm(x,mean=0,sd=1, log = FALSE)
+pnorm(q,mean=0,sd=1, lower.tail = TRUE, log.p = FALSE)
+qnorm(p,mean=0,sd=1,lower.tail=TRUE, log.p=FALSE)
+rnorm(n,mean=0,sd=1)
+
+set.seed(9)
+rbinom(100,1,0.5)
+e<-rnorm(100,0,2)
+y<-0.5 + 2*x +e
+plot(x,y)
+
+sample(letters,5)
+sample(1:10,replace=TRUE)
+sample(1:10)
+
+```
+
+#Profiling
+
+```R
+a <- system.time() # proc_time
+#  user  system elapsed 
+#  0.035   0.006   0.042
+```
+
+##R Profiler
+```R
+Rprof() #start profiler
+summaryRprof()
+by.total
+by.self
 ```
