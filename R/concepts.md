@@ -118,3 +118,27 @@ A function  + an environment is called a closure or function closure.
 2.   Parent Environment 
 3.   Until Empty Environment.
 
+##Lexical scoping
+Free variables are looked at the environment in which the functions are defined.
+
+##Dynamic scoping
+Free variables are looked in the environment in which the functions are called.
+
+##Parent frame.
+The environment in which the function is called.
+
+## Object Storage
+All objects should be stored in the memory.
+
+#Date and Time
+
+Date class 
+No of days since 1/1/1970
+Time has two classes POSIXct and POSIXlt
+No of seconds since 1/1/1970
+
+
+##POSIXct
+
+
+##POSIXct

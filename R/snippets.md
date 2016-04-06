@@ -298,3 +298,19 @@ args(paste)
 
 function(...,sep=" ",collapse=NULL)
 ```
+
+#Date
+
+```R
+as.Date("1970-1-1")
+```
+
+#Time
+```R
+weekdays(d)
+months(d)
+quarters(d)
+as.posixct(t)
+as.posixlt(t)
+Sys.time()
+```
