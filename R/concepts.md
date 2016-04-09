@@ -118,7 +118,6 @@ A function  + an environment is called a closure or function closure.
 2.   Parent Environment 
 3.   Until Empty Environment.
 
-<<<<<<< HEAD
 ##Lexical scoping
 Free variables are looked at the environment in which the functions are defined.
 
@@ -185,3 +184,9 @@ Apply a function on list of elements
 2.  r - Random number generation
 3.  p - Cumulative distribution
 4.  q - Quantile function
+
+#data.table
+
+
+No column subscripting
+Data tables are copied by reference so no new copy is made.

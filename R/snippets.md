@@ -110,6 +110,38 @@ read.csv
 data.frame(foo = 1:4,bar=c(T,T,F,F))
 ```
 
+#Data Table {Package}
+```R
+DT = data.table(x=norm(9),y=rep(c("a","b","c")),each=3),z=norm(9))
+head(DT)
+tables()
+DT[2,] #subset rows
+DT[c(2,3),] #subset 2 and 3rd row
+
+DT[DT$y =="a"]
+DT[,list(mean(x),sum(z))] #perform functions for all values
+DT[,table(y)] # Table of y values
+
+DT[,w:=z^2] # add new column
+DT[,m:={tmp <-(x+z); log2(tmp+5)}] # Multiple operation
+DT[,a:=x>0]
+DT[,b:=mean(x+w),by=a] # set by a
+
+DT[,.N,by=x] #Number of occurence of elements in column x
+
+setkey(DT,x)
+DT['a']
+merge(DT1,DT2)
+
+#Fast Reading
+big_df <- data.frame(x=rnorm(1E6),y=rnorm(1E6))
+file <- tempfile()
+write.table(big_df,file=file,row.names=FALSE,col.names=TRUE,sep="\t",quote=FALSE)
+system.time(fread(file))
+
+
+```
+
 ##Converting to matrix
 ```R
 data.matrix
@@ -119,7 +151,7 @@ data.matrix
 
 ##read.table
 ```R
-read.table(file,header,sep,colClasses,nrows,comment.char,skip,stringsAsFactors)
+read.table(file,header,sep,colClasses,nrows,comment.char,skip,stringsAsFactors,na.strings,quote="")
 ```
 ##Figuring out classes of each column
 ```R
@@ -128,6 +160,42 @@ classes <- sapply(initial,class)
 tabAll <- read.table("table.txt", colClasses = classes)
 ```
 
+##Reading Excel files
+XLConnect
+```R
+library(xlsx)
+read.xlsx(filename,sheetIndex=1,header=TRUE,colIndex=2:3,rowIndex=1:20)
+
+write.xlsx()
+```
+
+##Reading XML files
+```R
+library(XML)
+doc <- xmlTreeParse(fileUrl,useInternal=TRUE)
+rootNode <- xmlRoot(doc)
+xmlName(rootNode)
+rootNode[[1]]
+rootNode[[1]][[1]]
+xmlSApply(rootNode,xmlValue)
+
+XPath
+xpathSApply(rootNode,"//name",xmlValue)
+
+htmlTreeParse
+scores <- xpathSApply(doc,"//li[@class ="scores"],xmlValue)
+```
+
+##Reading JSON files
+
+```R
+library(jsonlite)
+jsonData <- fromJSON(fileURL)
+names(jsonData)
+jsonData$owner$login
+myjson <- toJSON(iris,pretty=TRUE)
+cat(myjson)
+```
 #Textual formats
 ```R
 dput(x,file="x.R")
@@ -305,7 +373,6 @@ args(paste)
 function(...,sep=" ",collapse=NULL)
 ```
 
-<<<<<<< HEAD
 #Date
 
 ```R
@@ -446,4 +513,71 @@ Rprof() #start profiler
 summaryRprof()
 by.total
 by.self
+```
+
+#Downloading files
+
+```R
+setwd(".data")
+if(!file.exists("data")) {
+   dir.create("data")
+}
+
+download.file(fileUrl,destfile = "./data/camera.csv",method = "curl")
+dateDownloaded <- date()
+```
+
+#One dimensional summary
+
+```R
+summary(pollution$pm25)
+
+boxplot(pollution$pm25,col="blue")
+abline(h = 12)
+
+hist(pollution$pm25,col ="green",breaks=100)
+rug(pollution$pm25)
+abline(v = 12, lwd = 2)
+abline(v = median(pollution$pm25),col = "magenta", lwd = 4)
+
+barplot(table(pollution$region),col = "wheat", main = "Num counties in each region")
+
+```
+
+#Multidimensional plots
+
+boxplot(pm25 ~ region,data = pollution,col = "red")
+
+
+par(mfrow = c(2,1) , mar = c(4,4,2,1))
+hist(subset(pollution,region == "east")$pm25,col = "green")
+hist(subset(pollution,region == "west")$pm25,col = "green")
+
+with(pollution,plot(lattitude,pm25),col = region)
+abline(h = 12,lwd = 2, lty = 2)
+
+
+#Graphics plotting
+
+#Base plot
+```R
+library(datasets)
+data(cars)
+with(cars,plot(speed,dist))
+```
+
+#The lattice system
+
+```R
+library(lattice)
+state <- data.frame(state.x77,region = state.region)
+xyplot(Life.Exp ~ Income | region,data = state , layout = c(4,1))
+```
+
+#The ggplot2
+
+```R
+library(ggplot2)
+data(mpg)
+qplot(displ,hwy,data = mpg)
 ```
