@@ -564,7 +564,63 @@ abline(h = 12,lwd = 2, lty = 2)
 library(datasets)
 data(cars)
 with(cars,plot(speed,dist))
+
+?par
+
+library(datasets)
+hist(airquality$Ozone)
+with(airquality,plot(Wind,Ozone))
+airquality <- transform(airquality, Month = factor(Month))
+boxplot(Ozone ~ Month,airquality,xlab = "Month" , ylab = "Ozone (ppb)")
+
+par("bg")
+
+par("mar")
+
+# type = "n" just initializing the graphic device and other things without plotting
+# actual data
+
+with(airquality,plot(Wind, Ozone, main = "Ozone and Wind in New York city",
+     type = "n"))
+with(subset(airquality,Month == 5),points(Wind,Ozone,col = "blue"))
+with(subset(airquality,Month != 5),points(Wind,Ozone,col = "red"))
+legend("topright", pch = 1, col = c("blue","red"), legend = c("May", "Other months"))
+
+par(mfrow = c(1,2))
+with(airquality, {
+   plot(Wind,Ozone, main = "Ozone and Wind")
+   plot(Solar.R, Ozone, main = "Ozone and Solar Radiation")
+   mtext("Ozone" , outer = TRUE)
+})
+
+
 ```
+## some parameters for par() function
+
+* pch  - plotting symbol
+* lty  - Line type
+* lwd  - Line width
+* col  - Plotting color ,use colors()
+* xlab - x -axis label
+* ylab - y-axis
+* las  - label slope
+* bg   - background color
+* mar  - margin size
+* oma  - outer margin area
+* mfrow- number of plots per row
+* mfcol- number of plots per col
+
+## Base plotting functions
+
+1. plot
+2. lines
+3. points
+4. text
+5. title
+6. mtext
+7. axis
+8. legend
+9. abline - line
 
 #The lattice system
 
@@ -580,4 +636,22 @@ xyplot(Life.Exp ~ Income | region,data = state , layout = c(4,1))
 library(ggplot2)
 data(mpg)
 qplot(displ,hwy,data = mpg)
+```
+
+# Graphic devices
+
+```R
+x11()
+pdf(file = "myplot.pdf")
+with(faithful, plot(eruptions, waiting))
+dev.off()
+
+dev.cur()
+
+dev.set(<integer>)
+dev.copy(png,file = "plot.png")
+dev.copy2pdf(file ="me.pdf")
+dev.off()
+
+
 ```

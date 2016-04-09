@@ -101,11 +101,32 @@ Takes good of both worlds
 1. graphics - contains plotting functions for the base graphics systems.
 2. grDevices - contains code for graphics devices X11 , pdf, postscript,PNG
 
+## Two phases
+
+1. Initializing the plot
+2. Annotating an existing plot
+
 ## Lattice plotting system
 
 1. lattice - producing graphics
 2. grid - graphing system.
 
+# Graphics devices
+
+?Devices
+
+1. Screen devices
+2. File devices
+   a. Vector formats
+      * pdf
+      * svg
+      * win.metafile
+      * postscript
+   b. Bitmaps
+      * png
+      * jpeg
+      * tiff
+      * bmp
 
 
 
