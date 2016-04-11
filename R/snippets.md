@@ -653,5 +653,123 @@ dev.copy(png,file = "plot.png")
 dev.copy2pdf(file ="me.pdf")
 dev.off()
 
+```
+
+#MySQL
+
+```R 
+install.packages("RMySQL")
+library(RMySQL)
+library(RMySQL)
+ucscDb <- dbConnect(MySQL(),user="genome", host="genome-mysql.cse.ucsc.edu")
+result <- dbGetQuery(ucscDb,"show Databases;");dbDisconnect(ucscDb)
+
+hg19 <- dbConnect(MySQL(),user="genome", db="hg19",host="genome-mysql.cse.ucsc.edu")
+allTables <- dbListTables(hg19)
+length(allTables)
+head(allTables)
+dbListFields(hg19,"affyU133Plus2")
+dbGetQuery(hg19, "select count(*) from affyU133Plus2")
+
+hg19 <- dbConnect(MySQL(),user="genome", db="hg19",host="genome-mysql.cse.ucsc.edu")
+query <- dbSendQuery(hg19,"select * from affyU133Plus2 where misMatches between 1 and 3")
+affyMis <- fetch(query)
+quantile(affyMis$misMatches)
+dbClearResult(query)
+dbDisconnect(hg19)
 
 ```
+
+#HDF5
+
+Hierarchial Data format
+
+```R
+source("http://bioconductor.org/biocLite.R")
+biocLite("rhdf5")
+
+library(rhdf5)
+created <- h5createFile("example.h5")
+created
+
+h5createGroup("example.h5","l1e1")
+h5createGroup("example.h5","l1e2")
+h5createGroup("example.h5","l1e1/l2e1")
+h5ls("example.h5")
+
+a = c(1,2,3,5,6)
+df = data.frame(1:3,c("ab","bc","ca"))
+h5write(df,"example.h5","DataFrame")
+h5ls("example.h5")
+
+A = matrix(1:10,nr=5,nc=2)
+h5write(A,"example.h5","matrix")
+h5write(c(12,13,14),"example.h5","matrix",index=list(1:3,1))
+h5read("example.h5","matrix")
+```
+
+#Web Scrapping
+
+```R
+con <- url("http://scholar.google.com/citations?user=HI-I6C0AAAAJ&hl=en")
+htmlCode <- readLines(con)
+close(con)
+install.packages("XML")
+library(XML)
+html <- htmlTreeParse(htmlCode,useInternalNodes=T)
+xpathSApply(html,"//title",xmlValue)
+xpathSApply(html,"//td[@id='col-citedby']",xmlValue)
+
+library(httr)
+html2 <- GET(url)
+content2 <- content(html2,as="text")
+parsedHtml <- htmlParse(content2,asText=TRUE)
+
+pg2 <- GET("http://httpbin.org/basic-auth/user/passwd",authenticate("user","passwd"))
+pg2
+names(pg2)
+
+
+
+```
+
+#Useful Packages
+
+1. file
+2. url
+3. gzfile
+4. bzfile
+
+?connections
+
+##foreign package
+
+1.  read.arff
+2.  read.dta
+3.  read.mtp
+4.  read.octave
+5.  read.spss
+6.  read.xport
+
+##Database packages
+1.  RPostgreSQL
+2.  RODBC
+3.  RMongo
+4.  rmongodb
+
+## Reading Images
+
+1.  jpeg
+2.  readbitmap
+3.  png
+4.  EBImage
+
+##GIS
+1. rdgal
+2. rgeos
+3. raster
+
+##Mp3
+1.  tuneR
+2.  seewave
+
