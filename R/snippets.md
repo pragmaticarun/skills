@@ -518,7 +518,7 @@ by.self
 #Downloading files
 
 ```R
-setwd(".data")
+setwd("./data")
 if(!file.exists("data")) {
    dir.create("data")
 }
@@ -545,7 +545,7 @@ barplot(table(pollution$region),col = "wheat", main = "Num counties in each regi
 ```
 
 #Multidimensional plots
-
+```R
 boxplot(pm25 ~ region,data = pollution,col = "red")
 
 
@@ -555,7 +555,7 @@ hist(subset(pollution,region == "west")$pm25,col = "green")
 
 with(pollution,plot(lattitude,pm25),col = region)
 abline(h = 12,lwd = 2, lty = 2)
-
+```
 
 #Graphics plotting
 
