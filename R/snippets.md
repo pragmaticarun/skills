@@ -384,8 +384,8 @@ as.Date("1970-1-1")
 weekdays(d)
 months(d)
 quarters(d)
-as.posixct(t)
-as.posixlt(t)
+as.POSIXct(t)
+as.POSIXlt(t)
 Sys.time()
 =======
 #Looping functions
@@ -655,6 +655,17 @@ dev.off()
 
 ```
 
+#Lattice Functions
+```R
+xyplot
+bwplot
+histogram
+stripplot
+dotplot
+splom
+levelplot
+contourplot
+```
 #MySQL
 
 ```R 
@@ -773,3 +784,116 @@ names(pg2)
 1.  tuneR
 2.  seewave
 
+# Subsetting
+```R
+
+X[,1] #by column
+X[,"var1"] #by column
+X[1:2,"var2"]
+
+X[(X$var1 <= 3 & X$var3 > 11),] #subsetting rows
+X[which(X$var2 >8),] #Subset without NA
+
+```
+
+#Sorting
+
+```R
+sort(X$var1)
+sort(X$var1,decreasing=TRUE)
+sort(X$var1,na.last=TRUE)
+
+X[order(X$var1,X$var2),] #Order by a column
+
+```
+
+#Summary
+
+```R
+head(X,n=3)
+tail(X,n=3)
+summary(restData)
+str(restData)
+qantile(X,na.rm=TRUE,probs(0.5,0.75,0.9))
+table(X,useNA="ifany")
+```
+#Check missing values
+```R
+sum(is.na(x$var1))
+any(is.na(X$var1))
+all(X$var1 > 10)
+```
+
+#Sums
+```R
+colSums(is.na(restData))
+all(colSums(is.na(restData)==0)
+table(restData$zipCode %in% c("21212")) # any value containing 21212
+object.size(fakeData)
+```
+
+#CrossTabs
+```R
+data(UCBAdmissions)
+DF = as.data.frame(UCBAdmissions)
+summary(DF)
+xt <- xtabs(Freq ~ Gender + Admit,data=DF)
+xt # display frequency 
+
+ftable(xt)
+
+```
+
+#Sequence
+```R
+seq(1,10,by=2)
+seq(1,10,length=3)
+seq(along = x)
+```
+
+#Binary Variables
+
+```R
+resData$zipWrong = ifelse(restData$zipCode < 0,TRUE,FALSE)
+table(resData$zipWrong,resData$zipCode < 0)
+```
+
+#Breaking continuous variables into groups
+
+```R
+
+restData$zipGroups = cut(restData$zipCode,breaks=quantile(restData$zipCode))
+table(restData$zipGroups)
+
+library(Hmisc)
+resData$zipGroups = cut2(restData$zipCode,g=4) #factor
+table(resData$zipGroups)
+resdata$zcf <- factor(resData$zipCode,levels=c(21010,21011))
+relevel(yesnofac,ref="yes")
+as.numeric(yesnofac,ref=yes)
+
+```
+
+#Mutate
+
+```R
+library(Hmisc); library(plyr)
+resData2 = mutate(resData,zipGroups=cut2(zipCode,g=4))
+table(resdata$zipGroups)
+```
+
+#Reshaping
+
+```R
+carMelt <- melt(mtcars,id=c("carname,"gear","cyl"),measure.vars=c("mpg","hp"))
+cylData <- dcast(carMelt,cyl ~ variable)
+cylData <- dcast(carMelt,cyl ~ variable,mean)
+
+tapply(InsectSpray$count,InsectSpray$spray,sum)
+
+sprCount <- lapply(split(InsectSpray$count,InsectSpray$spray),sum)
+unlist(sprCount)
+
+ddply(InsectSpraysm.(spray),summarize,sum=sum(count))
+
+```

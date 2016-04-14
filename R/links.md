@@ -24,3 +24,10 @@
 [httr](http://cran.r-project.org/web/packages/httr/httr.pdf)
 
 
+#Lecture Notes
+[Andrew Jaffer] (http://www.biostat.jhsph.edu/~/ajaffe/lec_winterR/Lecture%202.pdf)
+[Transform function](http://statemethods.net/management/functions.html)
+
+#Tidy Data
+
+[Tidy Data] (http://vita.hat.co.nz/papers/tidy-data.pdf)

@@ -190,3 +190,15 @@ Apply a function on list of elements
 
 No column subscripting
 Data tables are copied by reference so no new copy is made.
+
+#dplyr
+
+##Verbs
+1. select - return subset of columns
+2. filter - extract subset of rows based on conditions
+3. arrange - reorder rows of dataframe
+4. rename  - rename variables n a data frame
+5. mutate  - add/transform variables
+6. summarise/summarize - generate summary of statistics.
+
+
