@@ -921,3 +921,15 @@ summarize(hotCold,pm25 = mean(pm25),o3=max(o3tmean2))
 
 chicago %>% mutate(month = as.POSIXlt(date)$mon +1) %>% group_by(month) # pipeline operator
 ```
+
+#Merging
+
+```R
+merge(x,y,by.x,by.y,all)
+intersect(names(solutions),names(reviews))
+
+join(df1,df2) #plyr joins columns with same name. left join
+
+listD = list(df1,df2,df3)
+join_all(listD)
+```
