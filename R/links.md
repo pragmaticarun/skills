@@ -31,3 +31,13 @@
 #Tidy Data
 
 [Tidy Data] (http://vita.hat.co.nz/papers/tidy-data.pdf)
+
+#Merging
+
+[Merging](http://www.statmethods.net/management/merging.html)
+
+[plyr] (http://plyr.had.co.nz)
+
+[Joins] (http://en.wikipedia.org/wiki/Join_(SQL))
+
+

@@ -897,3 +897,27 @@ unlist(sprCount)
 ddply(InsectSpraysm.(spray),summarize,sum=sum(count))
 
 ```
+
+#dplyr
+
+```R
+select(chicago,city:dptp) #select columns
+select(chicago,-(city:dptp))
+
+i <- match("city",names(chicago)) #index of match
+
+chicago[,-(i:j)]
+
+filter(chicago, pm25tmean2 >30 & tmpd > 80)
+
+arrange(chicago,date)
+arrange(chicago,desc(date))
+
+rename(chicago,pm25 = pm25tmean2)
+chicago <- mutate(chicago,pm25t = pm25 = mean(pm25,na.rm = TRUE))
+
+hotCold <- group_by(chicago,tempcat)
+summarize(hotCold,pm25 = mean(pm25),o3=max(o3tmean2))
+
+chicago %>% mutate(month = as.POSIXlt(date)$mon +1) %>% group_by(month) # pipeline operator
+```
