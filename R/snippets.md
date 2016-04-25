@@ -377,6 +377,7 @@ function(...,sep=" ",collapse=NULL)
 
 ```R
 as.Date("1970-1-1")
+library(lubridate)
 ```
 
 #Time
@@ -932,4 +933,38 @@ join(df1,df2) #plyr joins columns with same name. left join
 
 listD = list(df1,df2,df3)
 join_all(listD)
+```
+
+#Editing Text variables
+
+##Fixing character vectors
+
+```R
+tolower()
+toupper()
+strsplit(names(carData),"\\.")
+sub("_","",testNAme)
+gsub("_","",testName) #replace all occurences in text
+
+library(stringr)
+nchar("King")
+
+substr("Arunkumar Maniam Rajan",1,9)
+
+paste("Arunkumar","Maniam Rajan")
+paste0("Arunkumar","King")
+
+str_trim("Arun    ")
+
+```
+
+##Finding Values
+
+```R
+grep("Almeda",intersection)
+grepl("Almeda",intersection) # returns true or false
+
+cameraData[!grepl("Almeda",intersection),]
+grep("Almeda",intersection,value=TRUE)
+
 ```
