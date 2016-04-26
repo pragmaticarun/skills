@@ -244,5 +244,9 @@ Final estimate
 2. An assignment of each point to clusters
 
 
+#Colors
 
-
+RColorBrewer package
+1. Sequential
+2. Diverging
+3. Qualitative
