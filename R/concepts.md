@@ -202,3 +202,47 @@ Data tables are copied by reference so no new copy is made.
 6. summarise/summarize - generate summary of statistics.
 
 
+#Hierarchial Clustering
+
+*   How do we define close ?
+*   How do we group things ?
+*   How do we visualize the grouping ?
+*   How do we interpret the grouping ?
+
+1. Find the closest two things
+2. Put them together
+3. Find the next closest
+
+Requires
+
+1. A defined distance
+   a.  Continuous - Euclidean distance
+   b.  Continuous - Correlation similarity
+   c.  Binary     - Manhattan distance
+
+2. A merging approach
+   a. Complete
+   b. Average
+
+
+#K means Clustering
+
+1. Fix numner of clusters
+2. Get centroids of each cluster
+3. Assign things to the closest centroid
+4. Recalculate centroids
+
+Requires
+
+1. A defined distance metric
+2. Number of clusters
+3. An initial guess as to cluster centroids
+
+Final estimate
+
+1. Final estimate of cluster centroids
+2. An assignment of each point to clusters
+
+
+
+

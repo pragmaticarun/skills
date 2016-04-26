@@ -933,3 +933,9 @@ join(df1,df2) #plyr joins columns with same name. left join
 listD = list(df1,df2,df3)
 join_all(listD)
 ```
+
+#Query
+
+```R
+mean(gdp[gdp$V1 %in% intersect(fed[fed$Income.Group == "High income: nonOECD",]$CountryCode,gdp$V1),]$V2,na.rm=TRUE)
+```
