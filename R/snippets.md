@@ -935,6 +935,12 @@ listD = list(df1,df2,df3)
 join_all(listD)
 ```
 
+#Query
+
+```R
+mean(gdp[gdp$V1 %in% intersect(fed[fed$Income.Group == "High income: nonOECD",]$CountryCode,gdp$V1),]$V2,na.rm=TRUE)
+```
+
 #Editing Text variables
 
 ##Fixing character vectors
@@ -967,4 +973,35 @@ grepl("Almeda",intersection) # returns true or false
 cameraData[!grepl("Almeda",intersection),]
 grep("Almeda",intersection,value=TRUE)
 
+```
+
+#Kmeans
+
+```R
+dataFrame <- data.frame(x,y)
+kmeansObj <- kmeans(dataFrame,centers = 3)
+names(kmeansobj)
+```
+
+```R
+svd(dataframe)
+library(impute)
+impute.knn(dataMatrix2)
+svd1 = svd(scale(sub1[,-c(562,563)]))
+```
+
+#Working with Colors
+```R
+pal <- colorRamp(c("red","blue"))
+pal(seq(0,1,len=10)) # returns matrix of RGB
+
+pal <- colorRampPalette(c("red","yellow"))
+pal(2) #returns n colors as #FF0000
+
+library(RColorBrewer)
+cols <- brewer.pal(3,"BuGn")
+pal <- colorRampPalette(cols)
+image(volcano,col=pal(20)
+rgb(0,0,0,0.2)
+library(colorspace)
 ```
