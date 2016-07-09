@@ -1005,3 +1005,18 @@ image(volcano,col=pal(20)
 rgb(0,0,0,0.2)
 library(colorspace)
 ```
+
+#knitr
+
+```R
+library(knitr)
+knit2html("a.Rmd")
+```
+
+#Rmarkdown
+```R
+```{r name,echo=TRUE,results="hide/asis",fig.height=4,fig.width=4,}
+```{r setoptions,echo=FALSE}
+opts_chunk$set(echo=FALSE, results="hide")
+```
+
